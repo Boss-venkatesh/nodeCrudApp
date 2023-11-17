@@ -1,0 +1,42 @@
+<%- include("layout/header") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto mt-4">
+            <div class="card shadow">
+                <div class="card-header bg-success">
+                    <h3 class="text-light"> Edit Users (<%= user.name %>)</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/update/<%= user._id %>" method="post" id="add-form" enctype="multipart/form-data"
+                      class="custom-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">name</label>
+                            <input type="name" name="name" value="<%= user.name %>" class="form-control" placeholder="Enter name" required/>
+                          </div>
+                        <div class="mb-3">
+                          <label for="email" class="form-label">email</label>
+                          <input type="email" name="email" value="<%= user.email %>" class="form-control" placeholder="Enter email" required/>
+                        </div>
+                        <div class="mb-3">
+                          <label for="phone" class="form-label">phone</label>
+                          <input type="phone" value="<%= user.phone %>" class="form-control" name="phone" placeholder="enter phone" required/>
+
+                        </div>
+                        <div class="mb-3">
+                          <label for="file" class="form-label">Select Image</label>
+                          <input type="file" name="image" class="form-control" required/>
+                          <img src="/<%= user.image %>" width="100" class="img-thumbnail  ">
+                        </div>
+                        <input type="hidden" name="old_image" value="<%= user.image %>" class="btn ">
+                        <div class="mb-3 d-grid">
+                            <input type="submit" name="submit" value="Update User" class="btn btn-success btn-lg">
+                         </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("layout/footer") %>
